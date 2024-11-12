@@ -9,12 +9,6 @@ if (isset($_POST['btnSubmitData'])) {
   $clientQuery = "INSERT INTO userinfo(firstName, lastName, birthDate) VALUES ('$firstName', '$lastName', '$birthDate')";
   $clientResult = executeQuery($clientQuery);
 
-  if ($clientResult) {
-    header("Location: index.php");
-    exit();
-  } else {
-    echo "<p class='text-center text-danger'>Error: " . mysqli_error($conn) . "</p>";
-  }
 }
 
 $query = "SELECT * FROM userinfo";
