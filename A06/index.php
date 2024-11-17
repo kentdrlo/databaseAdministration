@@ -11,6 +11,12 @@ if (isset($_POST['btnSubmitData'])) {
 
 }
 
+if (isset($_POST['btnDelete'])) {
+  $userID = $_POST['userID'];
+  $deleteQuery = "DELETE FROM userinfo WHERE userInfoID = '$userID'";
+  executeQuery($deleteQuery);
+}
+
 $query = "SELECT * FROM userinfo";
 $result = executeQuery($query);
 
@@ -63,7 +69,7 @@ $result = executeQuery($query);
               <input type="date" class="form-control" name="birthDate" placeholder="Birthday" required>
             </div>
             <div class="col-12 text-center">
-              <button type="submit" class="btn btn-dark" name="btnSubmitData">Submit</button>
+              <button type="submit" class="btn btn-light btn-lg shadow" name="btnSubmitData">Submit</button>
             </div>
           </div>
         </form>
@@ -85,54 +91,10 @@ $result = executeQuery($query);
             <div class="col" style="background-color: white; height: 2px; border-radius: 10px; margin-top: 5px"></div>
             <div class="birthDate">Birthday: <?php echo $user['birthDate']; ?></div>
             <div class="col" style="background-color: white; height: 2px; border-radius: 10px; margin-top: 5px"></div>
-          </div>
-          <?php
-        }
-      }
-      ?>
-    </div>
-  </div>
-
-
-  <div class="container">
-    <div class="row justify-content-center">
-      <?php
-      if (mysqli_num_rows($result) > 0) {
-        while ($user = mysqli_fetch_assoc($result)) {
-          ?>
-          <div class="col-lg-5 col-md-6 col-sm-8 col-12 boxInfo mx-3 my-4" style="border-radius: 20px; padding:20px">
-            <div class="userInfo text-center">User Information</div>
-            <div class="fName">First Name: <?php echo $user['firstName']; ?></div>
-            <div class="col" style="background-color: white; height: 2px; border-radius: 10px; margin-top: 5px"></div>
-            <div class="lName">Last Name: <?php echo $user['lastName']; ?></div>
-            <div class="col" style="background-color: white; height: 2px; border-radius: 10px; margin-top: 5px"></div>
-            <div class="birthDate">Birthday: <?php echo $user['birthDate']; ?></div>
-            <div class="col" style="background-color: white; height: 2px; border-radius: 10px; margin-top: 5px"></div>
-          </div>
-          <?php
-        }
-      }
-      ?>
-    </div>
-  </div>
-
-
-
-
-  <div class="container">
-    <div class="row justify-content-center">
-      <?php
-      if (mysqli_num_rows($result) > 0) {
-        while ($user = mysqli_fetch_assoc($result)) {
-          ?>
-          <div class="col-lg-5 col-md-6 col-sm-8 col-12 boxInfo mx-3 my-4" style="border-radius: 20px; padding:20px">
-            <div class="userInfo text-center">User Information</div>
-            <div class="fName">First Name: <?php echo $user['firstName']; ?></div>
-            <div class="col" style="background-color: white; height: 2px; border-radius: 10px; margin-top: 5px"></div>
-            <div class="lName">Last Name: <?php echo $user['lastName']; ?></div>
-            <div class="col" style="background-color: white; height: 2px; border-radius: 10px; margin-top: 5px"></div>
-            <div class="birthDate">Birthday: <?php echo $user['birthDate']; ?></div>
-            <div class="col" style="background-color: white; height: 2px; border-radius: 10px; margin-top: 5px"></div>
+            <form method="post" class="d-flex justify-content-end">
+              <input type="hidden" value="<?php echo $user['userInfoID'] ?>" name="userID">
+              <button class="btn btn-dark" name="btnDelete" style="margin-top: 20px">Delete</button>
+            </form>
           </div>
           <?php
         }
