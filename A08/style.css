@@ -1,0 +1,46 @@
+body {
+  background-color: rgb(244, 244, 244);
+}
+h1{
+    font-size: 50px;
+    font-weight: bold;
+}
+.filter{
+    font-size: 30px;
+    font-family: arial;
+    font-weight: bold;
+    margin-top: -30px;
+    margin-bottom: -20px;
+}
+.airlineName{
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.aircraftName{
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.sortName{
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.orderName{
+    font-size: 17px;
+    font-weight: bold;
+}
+
+select {
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  border: 2px solid black;
+
+}
+
+option {
+  text-align: center;
+  border: 2px solid black;
+}
